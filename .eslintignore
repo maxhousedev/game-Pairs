@@ -1,5 +1,0 @@
-test/fixtures
-**/app/public
-dist
-node_modules
-assets
