@@ -1,0 +1,127 @@
+.form {
+  grid-area: form;
+  align-self: start;
+
+  display: grid;
+  grid-template-columns: repeat(4, 22.5%);
+  grid-template-rows: repeat(3, 2rem);
+  grid-gap: 0.5rem 3%;
+
+  @include mq('mobile-L') {
+    grid-template-columns: repeat(3, 1fr) 5rem;
+    grid-gap: 0.5rem;
+  }
+
+  grid-template-areas:
+    'label-cells label-cells label-cells input-cells'
+    'label-timer label-timer label-timer input-timer'
+    'btn-container btn-container btn-container btn-container';
+
+  padding: 1em;
+
+  border: 2px solid $color-purple;
+  background-color: $color-bg;
+
+  @include mq('tablet') {
+    grid-template-columns: repeat(3, 1fr) 50px;
+    grid-gap: 1rem;
+  }
+
+  &__label {
+    padding: 0.5em 0;
+    line-height: 1;
+    color: $color-font;
+  }
+
+  &__label-cells {
+    grid-area: label-cells;
+  }
+
+  &__label-timer {
+    grid-area: label-timer;
+  }
+
+  &__input {
+    padding: 0.5rem;
+    color: $color-font;
+    text-align: right;
+    background-color: $color-light-purple;
+    border-color: $color-purple;
+
+    &.time-is-runningout {
+      color: $color-accent-yellow;
+    }
+
+    &:focus {
+      outline-color: $color-focus;
+    }
+  }
+
+  &__input-cells {
+    grid-area: input-cells;
+  }
+
+  &__input-timer {
+    grid-area: input-timer;
+  }
+
+  &__checkbox:checked + .label-for-checkbox {
+    color: $color-font;
+
+    &::after {
+      @include pseudo;
+      background-image: url('../../../assets/svg/check.svg');
+    }
+  }
+}
+
+.btn-container {
+  grid-area: btn-container;
+
+  display: flex;
+  justify-content: space-between;
+}
+
+.btn {
+  border-color: $color-purple;
+  font-weight: bold;
+  text-transform: uppercase;
+
+  &:focus {
+    outline-offset: 2px;
+    outline-color: $color-focus;
+  }
+
+  &__submit {
+    color: $color-font;
+    background-color: $color-accent-yellow;
+
+    &.game {
+      display: none;
+    }
+  }
+
+  &__reset {
+    color: $color-accent-yellow;
+    background-color: $color-blue;
+  }
+}
+
+.label-for-checkbox {
+  position: relative;
+  margin-left: 1.5em;
+  color: $color-purple;
+  cursor: pointer;
+
+  &::after {
+    @include pseudo;
+    left: -1.5em;
+    top: 0.5em;
+    width: 1em;
+    height: 1em;
+
+    background-color: $color-light-purple;
+    background-size: 100%;
+    background-repeat: no-repeat;
+  }
+}

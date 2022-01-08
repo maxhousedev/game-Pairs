@@ -1,0 +1,43 @@
+@import '../../scss/main.base.scss';
+@import './fonts.scss';
+@import './colors.scss';
+@import './container.scss';
+@import './form.scss';
+@import './card-list.scss';
+@import './popup.scss';
+
+body {
+  font-family: 'Open Sans', sans-serif;
+  font-size: 12px;
+
+  background-color: $color-bg-light-purple;
+
+  @include mq('tablet') {
+    font-size: 16px;
+  }
+
+  &.no-scroll {
+    overflow: hidden;
+
+    &::after {
+      @include pseudo;
+      top: 0;
+      right: 0;
+      left: 0;
+      bottom: 0;
+      background-color: rgba(lighten($color-bg-light-purple, 20%), 0.5);
+    }
+  }
+}
+
+.title {
+  grid-area: title;
+
+  margin: 0;
+
+  color: $color-accent-yellow;
+  background-color: $color-purple;
+  text-align: center;
+  line-height: 2.5rem;
+  text-transform: uppercase;
+}
